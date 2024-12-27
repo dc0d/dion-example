@@ -1,0 +1,22 @@
+{
+  "tasks": {
+    "dev": "APP_ENV=dev deno run --allow-read --allow-net --allow-env --watch main.ts",
+    "cover-all": "APP_ENV=test deno run test-cover && deno run cover && deno run cover-lcov && deno run cover-html",
+    "test-cover": "APP_ENV=test rm -rf ./cov_profile && deno test --coverage=cov_profile",
+    "cover": "APP_ENV=test deno coverage cov_profile",
+    "cover-lcov": "APP_ENV=test rm -f coverage.lcov && deno coverage cov_profile --lcov > coverage.lcov",
+    "cover-html": "APP_ENV=test rm -rf ./html_cov && genhtml --ignore-errors inconsistent,category -o html_cov coverage.lcov"
+  },
+  "imports": {
+    "@dc0d/dion": "jsr:@dc0d/dion@^0.1.8",
+    "@hono/hono": "jsr:@hono/hono@^4.6.14",
+    "@std/assert": "jsr:@std/assert@1",
+    "@std/async": "jsr:@std/async@^1.0.9",
+    "@std/dotenv": "jsr:@std/dotenv@^0.225.3",
+    "@std/log": "jsr:@std/log@^0.224.12"
+  },
+  "compilerOptions": {
+    "jsx": "precompile",
+    "jsxImportSource": "hono/jsx"
+  }
+}
