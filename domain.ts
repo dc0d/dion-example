@@ -1,4 +1,4 @@
-import { Hono } from "jsr:@hono/hono";
+import { Hono } from 'jsr:@hono/hono';
 
 export type Config = Readonly<{
   SVC_PORT: string;

@@ -1,13 +1,13 @@
 // deno-lint-ignore-file no-explicit-any
 
-import { loadSync } from "@std/dotenv";
-import { delay } from "@std/async/delay";
+import { loadSync } from '@std/dotenv';
+import { delay } from '@std/async/delay';
 
-import { Config as ConfigData, ConfigProvider } from "./domain.ts";
-import { injectable } from "@dc0d/dion";
+import { Config as ConfigData, ConfigProvider } from './domain.ts';
+import { injectable } from '@dc0d/dion';
 
 export const ConfigComponent = () => {
-  return injectable({ tags: "config" });
+  return injectable({ tags: 'config' });
 };
 
 @ConfigComponent()
@@ -26,8 +26,8 @@ export class Config implements ConfigProvider {
 
     this.#config = loadSync();
 
-    let env = Deno.env.get("APP_ENV");
-    env = env ? `.${env}` : "";
+    let env = Deno.env.get('APP_ENV');
+    env = env ? `.${env}` : '';
     const overWritten = loadSync({ envPath: `.env${env}` });
 
     this.#config = { ...this.#config, ...overWritten };

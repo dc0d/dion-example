@@ -4,17 +4,17 @@ import {
   LevelName,
   Logger as BaseLogger,
   LoggerOptions,
-} from "@std/log";
-import { inject, injectable } from "@dc0d/dion";
-import { ConfigProvider } from "./domain.ts";
+} from '@std/log';
+import { inject, injectable } from '@dc0d/dion';
+import { ConfigProvider } from './domain.ts';
 
 export const LoggerComponent = () => {
-  return injectable({ tags: "logger" });
+  return injectable({ tags: 'logger' });
 };
 
 @LoggerComponent()
 export class Logger extends BaseLogger {
-  constructor(configProvider = inject<ConfigProvider>({ tag: "config" })) {
+  constructor(configProvider = inject<ConfigProvider>({ tag: 'config' })) {
     const { SVC_SERVICE_NAME, SVC_LOG_LEVEL } = configProvider.read();
     const levelName = SVC_LOG_LEVEL as LevelName;
 
